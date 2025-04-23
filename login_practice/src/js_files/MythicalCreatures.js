@@ -156,15 +156,60 @@ const MythicalCreatures = () => {
                             <img className='extraCreatureImage' src={moreInfoSelectedCreature.images.creature} alt={moreInfoSelectedCreature.name} />
                         </div>
                         <div className='extraCreatureInfoBox'>
-                            <p className='extraCreatureNameText'>{moreInfoSelectedCreature.name}</p>
-                            <p className='extraCreatureLoreText'>{moreInfoSelectedCreature.lore}</p>
-                            <p className='extraCreatureHabitatText'><span className='ecpt'>Habitat:</span> {moreInfoSelectedCreature.habitat}</p>
-                            <p className='extraCreatureAttackTypeText'><span className='ecpt'>Attack Type:</span> {moreInfoSelectedCreature.attackType}</p>
-                            <p className='extraCreaturePersonalityText'><span className='ecpt'>Personality:</span> {moreInfoSelectedCreature.personality}</p>
-                            <p className='extraCreatureAlliancesText'><span className='ecpt'>Alliances:</span> {moreInfoSelectedCreature.alliances}</p>
-                            <p className='extraCreatureBattleTacticsText'><span className='ecpt'>Battle Tactics:</span> {moreInfoSelectedCreature.battleTactics}</p>
-                            <p className='extraCreatureLootDropsText'><span className='ecpt'>Loot Drops:</span> {moreInfoSelectedCreature.lootDrops}</p>
-                            <p className='extraCreatureHiddenAbilitiesText'><span className='ecpt'>Hidden Abilities:</span> {moreInfoSelectedCreature.hiddenAbilities}</p>
+                            <div className='extraCreatureNameBox'>
+                                <p className='extraCreatureNameText'>
+                                    {moreInfoSelectedCreature.name}
+                                </p>
+                                </div>
+
+                                <div className='extraCreatureLoreBox'>
+                                <p className='extraCreatureLoreText'>
+                                    {moreInfoSelectedCreature.lore}
+                                </p>
+                                </div>
+                            <div className='extraCreatureMiscInfoBox'>
+                                <div className='extraCreatureHabitatBox'>
+                                    <p className='extraCreatureHabitatText'>
+                                    <span className='ecpt'>Habitat:</span> {moreInfoSelectedCreature.habitat}
+                                </p>
+                                </div>
+
+                                <div className='extraCreatureAttackTypeBox'>
+                                    <p className='extraCreatureAttackTypeText'>
+                                        <span className='ecpt'>Attack Type:</span> {moreInfoSelectedCreature.attackType}
+                                    </p>
+                                </div>
+
+                                <div className='extraCreaturePersonalityBox'>
+                                    <p className='extraCreaturePersonalityText'>
+                                        <span className='ecpt'>Personality:</span> {moreInfoSelectedCreature.personality}
+                                    </p>
+                                </div>
+
+                                <div className='extraCreatureAlliancesBox'>
+                                    <p className='extraCreatureAlliancesText'>
+                                        <span className='ecpt'>Alliances:</span> {moreInfoSelectedCreature.alliances}
+                                    </p>
+                                </div>
+
+                                <div className='extraCreatureBattleTacticsBox'>
+                                    <p className='extraCreatureBattleTacticsText'>
+                                        <span className='ecpt'>Battle Tactics:</span> {moreInfoSelectedCreature.battleTactics}
+                                    </p>
+                                </div>
+
+                                <div className='extraCreatureLootDropsBox'>
+                                    <p className='extraCreatureLootDropsText'>
+                                        <span className='ecpt'>Loot Drops:</span> {moreInfoSelectedCreature.lootDrops}
+                                    </p>
+                                </div>
+
+                                <div className='extraCreatureHiddenAbilitiesBox'>
+                                    <p className='extraCreatureHiddenAbilitiesText'>
+                                        <span className='ecpt'>Hidden Abilities:</span> {moreInfoSelectedCreature.hiddenAbilities}
+                                    </p>
+                                </div>
+                            </div>
                             <button className='closeButton' onClick={() => {
                                 setMoreInformationOpen(false);
                                 setMoreInfoSelectedCreature(null);

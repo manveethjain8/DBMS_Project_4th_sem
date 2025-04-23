@@ -349,12 +349,14 @@ html, body {
     padding: 10px;
 }
 
-.extraCreatureNameBox {
+.extraCreatureNameBox{
+    margin-top: -20px;
     width: 100%;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .extraCreatureNameText{
