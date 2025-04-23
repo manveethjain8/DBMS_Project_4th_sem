@@ -1,0 +1,282 @@
+.html, .body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.familiarsPageBackground{
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100dvw;
+    background-image: url('/public/assets/images/mythicalCreaturesPageBackground.png');
+    background-size : cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.familiarsPageOverlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.473);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.familiarsPageHeader{
+    position: fixed;
+    top:0;
+    width: 100dvw;
+    height: 70px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid gray;
+    background-color: rgba(0, 0, 0, 0.644);
+}
+
+.familiarsPageMythicalCreaturesText{
+    font-size: 40px;
+    color: white;
+    margin-top: 40px;
+    margin-left: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.familiarsPageShortListedCreaturesText{
+    font-size: 20px;
+    color: white;
+    margin-top: 28px;
+    margin-left: 30px;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.familiarsPageShortListedCreaturesNumber{
+    position: absolute;
+    top: -10px;
+    left: 420px;
+    font-size: 18px;
+    color: white;
+    background-color: orange;
+    padding: 3px 8px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 99;
+    font-weight: bold;
+}
+
+.familiarsPageContractsText{
+    font-size: 20px;
+    color: white;
+    margin-top: 28px;
+    margin-left: 30px;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 100;
+}
+
+
+.familiarsPageMythicalCreaturesText:hover, .familiarsPageShortListedCreaturesText:hover, .familiarsPageContractsText:hover{
+    color: orange;
+}
+
+.familiarsPageMythicalCreaturesText:active, .familiarsPageShortListedCreaturesText:active, .familiarsPageContractsText:active{
+    color: orangered;
+}
+
+.familiarsPageCreditsBox{
+    max-height: 40px;
+    width: 90px;
+    background-color: green;
+    position: absolute;
+    right: 400px;
+    top: 18px;
+    border-radius: 10px;
+    padding-left:10px;
+    padding-right:20px;
+    justify-content: space-between;
+    color: white;
+    font-size: 22px;
+    margin: 0;
+    display: flex;
+}
+
+.familiarsPageCreditsText, .familiarsPageCreditsNumber{
+    margin-top: 9px;
+}
+
+.familiarsPageDisplay{
+    position: fixed;
+    top: 72px;
+    width: 100dvw;
+    height: calc(95dvh - 90px); 
+    display: grid;
+    padding-top: 40px;
+    padding-left: 20px;
+    grid-template-columns: repeat(6, 1fr); 
+    row-gap: 30px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.familiarsCard{
+    width: 200px;
+    height: 340px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.623);
+    box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.638), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: flex;
+    flex-direction: column;
+}
+
+.deleteFamiliarButton{
+    position: relative;
+    top:-20px;
+    right: 0px;
+    left: 190px;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin: 0;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.deleteFamiliarButton:hover{
+    background-color: blanchedalmond;
+    color: red;
+}
+
+.deleteFamiliarButton:active{
+    background-color: red;
+    color: black;
+}
+
+.familiarsImageBox{
+    margin-top: -25px;
+    width: 100%;
+    height: 150px;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.familiarsImage{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: none;
+    outline: none;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.familiarsNameBox, .summoningDateBox, .familiarStatusBox{
+    max-width: 100%;
+    max-height: 40px;
+    margin: 0;
+}
+
+.contractIdBox{
+    max-width: 100%;
+    height: 40px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.familiarsNameText, .summoningDateText, .familiarStatusText{
+    margin-top: 10px;
+    margin-left: 5px;
+    color: white;
+    font-size: 18px;
+}
+
+.contractIdText{
+    margin-top: 5px;
+    margin-left: 0px;
+    color: white;
+    font-size: 18px;
+    width: 20ch; /* wraps after approximately 30 characters */
+    word-wrap: break-word;
+}
+
+.familiarHolder{
+    color: gold;
+}
+.familiarHolderContractId{
+    margin: 0;
+    font-size: 18px;
+    margin-left: 0;
+    color: gold;
+}
+
+.dismissButton{
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    font-family: mountainKing;
+    background-color: red;
+    font-size: 25px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.dismissButton:hover{
+    background-color: orange;
+}
+
+.dismissButton:active{
+    background-color: darkred;
+}
+
+.activateButton{
+    width: 100%;
+    height: 30px;
+    border: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+    font-family: mountainKing;
+    background-color: forestgreen;
+    font-size: 25px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.activateButton:hover{
+    background-color: orange;
+}
+
+.activateButton:active{
+    background-color: olive;
+}
+
+.familiarsPageDefaultText{
+    position: absolute;
+    color: white;
+    font-size: 50px;
+    top:30%;
+    left: 38%;
+}
+
+
+

@@ -1,0 +1,246 @@
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sideWindow {
+    position: fixed;
+    top: 0;
+    right: -340px; /* start off-screen */
+    width: 300px;
+    height: 100%;
+    background-color: #1a1a1a;
+    color: white;
+    padding: 20px;
+    transition: right 0.3s ease-in-out;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+  
+.sideWindow.open {
+    right: 0;
+}
+
+.sideWindowUnderlay{
+    position: fixed;
+    top:0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.682);
+}
+
+.userProfilePictureBox{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.userProfilePicture{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: contain;
+    cursor: pointer;
+    border: 3px solid red;
+}
+
+.userProfilePicture:hover{
+    border: 3px solid green;
+}
+
+.userProfilePicture:active{
+    border: 3px solid yellow;
+}
+
+.userDetailsWindow {
+    position: fixed;
+    top: 30px; /* or wherever fits best */
+    width: 250px;
+    height: auto;
+    background-color:rgb(53, 52, 52);
+    color: white;
+    right: -290px; /* hide off-screen */
+    transition: right 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+  
+
+.userDetailsWindow.open{
+    right: 340px;
+}
+
+.userFirstNameBox, .userLastNameBox, .userEmailBox, .userCreditsBox{
+    margin-top: -10px;
+    margin-left: 20px;
+    width: 100%;
+    height: 30px;
+    color: white;
+    font-size: 23px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.userDetailsHolder{
+    color: gold;
+}
+
+.editButton.green{
+    margin-top: 23px;
+    height: 23px;
+    width: 50px;
+    margin-left: 50px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: green;
+    font-family: mountainKing;
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.editButton.green:hover{
+    color: green;
+    background-color: black;
+}
+
+.editButton.green:active{
+    color: black;
+    background-color: whitesmoke;
+}
+
+.editButton.red{
+    margin-top: 23px;
+    height: 23px;
+    width: 50px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 20px;
+    color: white;
+    background-color: red;
+    font-family: mountainKing;
+    font-size: 19px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.editButton.red:hover{
+    color: red;
+    background-color: black;
+}
+
+.editButton.red:active{
+    color: black;
+    background-color: whitesmoke;
+}
+
+.userDetailsHolderLabel{
+    margin-top: 23px;
+    margin-right: 5px;
+    color: gold;
+}
+
+.creditsInput{
+    margin-top: 13px;
+    height: 40px;
+    width: 70px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    font-family: mountainKing;
+    text-indent: 8px;
+    font-size: 23px;
+    border: none;
+}
+
+.creditsInput:active, .creditsInput:focus{
+    outline: none;    
+    border: none
+}
+
+.toggleButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1100;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.loginButtonBox{
+    margin-top: 60px;
+    height: 40px;
+    width: 100%;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.loginButton{
+    height: 100%;
+    width: 100%;
+    color: white;
+    background-color: green;
+    font-family: mountainKing;
+    font-size: 25px;
+    border: none;
+    border-radius: 20px;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.loginButton:hover{
+    color: green;
+    background-color: black;
+}
+
+.loginButton:active{
+    color: black;
+    background-color: whitesmoke;
+}
+
+.logoutButtonBox{
+    margin-top: 20px;
+    height: 40px;
+    width: 100%;
+    align-items: center;
+    vertical-align: middle;
+}
+
+.logoutButton{
+    height: 100%;
+    width: 100%;
+    color: white;
+    background-color: red;
+    font-family: mountainKing;
+    font-size: 25px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.logoutButton:hover{
+    color: red;
+    background-color: black;
+}
+
+.logoutButton:active{
+    color: black;
+    background-color: whitesmoke;
+}
+
+.userDetailsDefaultText{
+    margin-left: 30px;
+    font-size: 20px;
+}
+
+  

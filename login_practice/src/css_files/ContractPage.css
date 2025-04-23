@@ -1,0 +1,300 @@
+.html, .body{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.contractPageBackground{
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100dvw;
+    background-image: url('/public/assets/images/mythicalCreaturesPageBackground.png');
+    background-size : cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contractPageOverlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.473);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contractPageHeader{
+    position: fixed;
+    top:0;
+    width: 100dvw;
+    height: 70px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid gray;
+    background-color: rgba(0, 0, 0, 0.644);
+}
+
+.contractPageMythicalCreaturesText{
+    font-size: 40px;
+    color: white;
+    margin-top: 40px;
+    margin-left: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.contractPageShortListedCreaturesText{
+    font-size: 20px;
+    color: white;
+    margin-top: 28px;
+    margin-left: 30px;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.contractPageShortListedCreaturesNumber{
+    position: absolute;
+    top: -10px;
+    left: 420px;
+    font-size: 18px;
+    color: white;
+    background-color: orange;
+    padding: 3px 8px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 99;
+    font-weight: bold;
+}
+
+.contractPageFamiliarsText{
+    font-size: 20px;
+    color: white;
+    margin-top: 28px;
+    margin-left: 30px;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 100;
+}
+
+
+.contractPageMythicalCreaturesText:hover, .contractPageShortListedCreaturesText:hover, .contractPageFamiliarsText:hover{
+    color: orange;
+}
+
+.contractPageMythicalCreaturesText:active, .contractPageShortListedCreaturesText:active, .contractPageFamiliarsText:active{
+    color: orangered;
+}
+
+.contractPageCreditsBox{
+    max-height: 40px;
+    width: 90px;
+    background-color: green;
+    position: absolute;
+    right: 400px;
+    top: 18px;
+    border-radius: 10px;
+    padding-left:10px;
+    padding-right:20px;
+    justify-content: space-between;
+    color: white;
+    font-size: 22px;
+    margin: 0;
+    display: flex;
+}
+
+.contractPageCreditsText, .contractPageCreditsNumber{
+    margin-top: 9px;
+}
+
+.contractPageDisplay{
+    position: fixed;
+    top: 72px;
+    width: 100dvw;
+    height: calc(95dvh - 90px); 
+    padding: 20px 30px 20px 50px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    stroke-width: none;
+    row-gap:50px ;
+}
+
+.contractCard{
+    max-width: 1400px;
+    height: 650px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.623);
+    box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.638), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contractDeleteButton{
+    position: relative;
+    top:-20px;
+    right: 10px;
+    left: 1380px;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    border: none;
+    background-color: red;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    transition: 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.contractDeleteButton:hover{
+    background-color: blanchedalmond;
+    color: red;
+}
+
+.contractDeleteButton:active{
+    background-color: red;
+    color: black;
+}
+
+
+.contractPageContractIdBox{
+    margin: 0;
+    max-width: 100%;
+    max-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+
+}
+
+.contractPageContractIdText{
+    margin: 0;
+    font-size: 30px;
+    color: white;
+}
+
+.contractItemsBox{
+    max-width: 100%;
+    height: auto;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); 
+    overflow: scroll;
+    scrollbar-width: none;
+    gap: 10px;
+
+}
+
+.contractItemsCard{
+    max-width: 250px;
+    max-height: 500px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 1px grey solid;
+}
+
+.contractItemImageBox{
+    width: 100%;
+    height: 210px;
+}
+
+.contractItemImage{
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+}
+
+.contractItemNameBox, .contractItemCostBox, .contractItemTotalCostBox, .contractItemQuantityBox, .contractItemTotalCostBox{
+    margin: 0;
+    width: 100%;
+    height: 40px;
+}
+
+.contractItemNameText, .contractItemCostText, .contractItemTotalCostText, .contractItemQuantityText, .contractItemTotalCostText{
+    margin: 0;
+    padding: 5px;
+    vertical-align: middle;
+    color: white;
+    font-size: 25px;
+}
+
+.contractItemDateTimeBox{
+    padding: 5px;
+    margin: 0;
+    width: 100%;
+    height: 40px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.contractItemDateTimeText{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 24px;
+    font-family: mountainKing;
+}
+
+.contractPageHolder{
+    color: gold;
+}
+
+
+.contractTotalBox{
+    margin-bottom: 10px;
+    height: 60px;
+    max-width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+}
+
+.contractTotalText{
+    margin-top: -10px;
+    color:white;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.dateTimeText{
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+.contractPageDefaultText{
+    top: 30%;
+    left: 35%;
+    position: absolute;
+    font-size: 50px;
+    color: white;
+}
+
+
+
+
+
+
+
+

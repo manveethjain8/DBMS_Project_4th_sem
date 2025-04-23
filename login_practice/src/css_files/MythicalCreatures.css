@@ -1,0 +1,471 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.mythicalCreaturesPageBackground{
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    height: 100dvh;
+    width: 100dvw;
+    background-image: url('/public/assets/images/mythicalCreaturesPageBackground.png');
+    background-size : cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.mythicalCreaturesOverlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.473);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mythicalCreaturesHeader{
+    position: fixed;
+    width: 100dvw;
+    height: 70px;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid gray;
+    background-color: rgba(0, 0, 0, 0.644);
+}
+
+.mythicalCreaturesText{
+    font-size: 40px;
+    color: white;
+    margin-top: 40px;
+    margin-left: 20px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.shortListedCreaturesText{
+    font-size: 20px;
+    color: white;
+    margin-top: 28px;
+    margin-left: 30px;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.shortListedCreaturesNumber{
+    position: absolute;
+    top: -10px;
+    left: 420px;
+    font-size: 18px;
+    color: white;
+    background-color: orange;
+    padding: 3px 8px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 99;
+    font-weight: bold;
+}
+
+.contractCreaturesText{
+    font-size: 20px;
+    color: white;
+    margin-top: 28px;
+    margin-left: 30px;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.familiarsText{
+    font-size: 20px;
+    color: white;
+    margin-top: 28px;
+    margin-left: 30px;
+    transition: 0.2s;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.mythicalCreaturesText:hover, .shortListedCreaturesText:hover, .contractCreaturesText:hover, .familiarsText:hover{
+    color: orange;
+}
+
+.mythicalCreaturesText:active, .shortListedCreaturesText:active, .contractCreaturesText:active, .familiarText:active{
+    color: orangered;
+}
+
+.creditsBox{
+    max-height: 40px;
+    width: 90px;
+    background-color: green;
+    position: absolute;
+    right: 500px;
+    top: 18px;
+    border-radius: 10px;
+    padding-left:10px;
+    padding-right:20px;
+    justify-content: space-between;
+    color: white;
+    font-size: 22px;
+    margin: 0;
+    display: flex;
+}
+
+.creditsText, .creditsNumber{
+    margin-top: 9px;
+}
+
+.creatureSearchInput{
+    position: absolute;
+    top: 20px;
+    right: 200px;
+    width: 250px;
+    height: 35px;
+    border: none;
+    font-family: mountainKing;
+    font-size: 20px;
+    border-radius: 5px;
+    outline: none;
+    text-indent: 20px;
+    background-color: rgb(200, 79, 35);
+    color: white;
+}
+
+.creatureSearchInput::placeholder{
+    color: white;
+}
+
+
+
+
+.mythicalCreaturesDisplay{
+    position: fixed;
+    height: calc(100dvh - 130px);
+    top: 90px;
+    width: 100dvw;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    display: grid;
+    padding-right: 10px;
+    padding-left: 40px;
+    padding-top: 20px;
+    overflow-y: auto;
+}
+
+.mythicalCreaturesCard{
+    height: 550px;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(182, 180, 180);
+    background-color: rgba(0, 0, 0, 0.632);
+}
+
+.creatureImageBox{
+    height: 250px;
+    width: 280px;
+    border: none;
+}
+
+.creatureImage{
+    height: 250px;
+    width: 280px;
+    border: none;
+}
+
+.creatureInfoBox{
+    object-fit: contain;
+    height: 250px;
+    width: 100%;
+}
+
+.creatureNameBox{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.creatureName{
+    font-size:35px;
+    color: white;
+    margin-left: 5px;
+    margin-top: 13px;
+}
+
+.creatureDescriptionBox{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.creatureDescription{
+    font-size: 20px;
+    color: white;
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.creatureBriefBox{
+    width: 100%;
+    height: 100px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    color: white;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    gap: 2px;
+}
+
+.creatureHPBox, .creatureDPBox, .creatureRarityBox, .creatureDominantElementBox{
+    width: 50%;
+    height: 50px;
+    align-items: center;
+    vertical-align: middle;
+    display: flex;
+}
+
+.creatureHPImage, .creatureDPImage, .creatureRarityImage, .creatureDominantElementImage{
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    object-fit: contain;
+    margin-left: 5px;
+}
+
+.creatureHPText, .creatureDPText, .creatureRarityText, .creatureDominantElementText{
+    font-size: 20px;
+}
+
+.creatureCostBox{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.creatureCostText{
+    font-size: 27px;
+    color: white;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+
+.cardButtonBox{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+}
+
+.moreInformationBox, .selectCreatureBox{
+    width: 50%;
+    height: 100%;
+}
+
+.selectCreatureButton, .moreInformationButton{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-family: mountainKing;
+    font-size: 25px;
+    transition: 0.2s;
+    color: white;
+    background-color: rgb(200, 79, 35);
+}
+
+.selectCreatureButton:hover, .moreInformationButton:hover{
+    background-color: orange;
+    cursor: pointer;
+}
+
+.selectCreatureButton:active, .moreInformationButton:active{
+    background-color: darkred;
+}
+
+
+
+.creatureNotFoundText{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: white;
+    margin-top: -100px;
+}
+
+.extraInfoContainer{
+    width: 60%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: color-mix(in srgb, black 70%, gray 30%);
+
+}
+
+.extraCreatureImageBox {
+    width: 300px;
+    height: 300px;
+    border: none;
+    position: relative;
+    top: -150px;
+    left: -5px;
+}
+
+.extraCreatureImage {
+    width: 300px;
+    height: 300px;
+    border: none;
+    object-fit: contain;
+}
+
+.extraCreatureInfoBox {
+    width: 570px;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 10px;
+    padding: 10px;
+}
+
+.extraCreatureNameBox {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.extraCreatureNameText{
+    font-size: 40px;
+    color: gold;
+}
+
+.extraCreatureLoreBox{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.extraCreatureLoreText{
+    font-size: 30px;
+    color: white;
+    margin-top: -15px;
+    line-height: 30px;
+    padding: 10px;  
+    letter-spacing: 1px; 
+}
+
+.extraCreatureMiscInfoBox{
+    margin-top: 10px;
+    width: 96.5%;
+    height: 270px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding: 10px;
+    border: 1px solid white;
+    left: -1px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    
+}
+
+.extraCreatureMiscInfoBox,
+.extraCreatureHabitatBox,
+.extraCreatureAttackTypeBox,
+.extraCreaturePersonalityBox,
+.extraCreatureAlliancesBox,
+.extraCreatureBattleTacticsBox,
+.extraCreatureLootDropsBox,
+.extraCreatureHiddenAbilitiesBox {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+}
+
+.extraCreatureHabitatText,
+.extraCreatureAttackTypeText,
+.extraCreaturePersonalityText,
+.extraCreatureAlliancesText,
+.extraCreatureBattleTacticsText,
+.extraCreatureLootDropsText,
+.extraCreatureHiddenAbilitiesText {
+    font-size: 22px;
+    color: white;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.ecpt{
+    margin-right: 15px;
+    font-size: 25px;
+    color: gold;
+}
+
+.closeButton{
+    position: absolute;
+    bottom: -4px;
+    right: 200px;
+    width: 200px;
+    height: 40px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    background-color: rgb(200, 79, 35);
+    transition: 0.2s;
+    border: none;
+    font-family: mountainKing;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.closeButton:hover{
+    background-color: orange;
+}
+
+.closeButton:active{
+    background-color: red;
+}
+
+.extraInfoBackground{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+
+
