@@ -5,6 +5,7 @@ const creaturesRoutes=require('./routes/creaturesRoutes');
 const cartRoutes=require('./routes/cartRoutes');
 const orderRoutes=require('./routes/orderRoutes');
 const familiarsRoutes=require('./routes/familiarsRoutes');
+const dragonGameRoutes = require('./routes/dragonGameRoutes');
 const cors=require('cors');
 const dotenv = require('dotenv');
 
@@ -22,11 +23,13 @@ app.get('/', (req, res)=>{
     res.send('MongoDB connected to familiarsTavern!');
 });
 
+
 app.use('/users', userRoutes);
 app.use('/', creaturesRoutes);
 app.use('/cart', cartRoutes);
 app.use('/orders', orderRoutes);
 app.use('/familiars', familiarsRoutes);
+app.use('/game', dragonGameRoutes);
 
 
 
