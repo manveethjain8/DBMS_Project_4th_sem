@@ -5,7 +5,16 @@ import { DataContext } from '../context/dataContext';
 import '../css_files/DragonGame.css';
 
 function DragonGame() {
-  const { loggedInUser, setLoggedInUser, credits, setCredits, creditsTrigger, setCreditsTrigger } = useContext(DataContext);
+  const {
+    loggedInUser,
+    setLoggedInUser,
+    credits,
+    setCredits,
+    creditsTrigger,
+    setCreditsTrigger,
+    familiars,
+  } = useContext(DataContext);
+
   const navigate = useNavigate();
 
   const [playerHealth, setPlayerHealth] = useState(100);
@@ -14,6 +23,7 @@ function DragonGame() {
   const [gameOver, setGameOver] = useState(false);
   const [resultMessage, setResultMessage] = useState('');
   const [error, setError] = useState('');
+  const [selectedFamiliar, setSelectedFamiliar] = useState(familiars[0]); // Default to first familiar if available
 
   useEffect(() => {
     if (!loggedInUser) {
@@ -23,85 +33,143 @@ function DragonGame() {
     }
   }, [loggedInUser, navigate]);
 
-  // Fetch player stats and credits
+  useEffect(() => {
+    // Ensure the familiar selection is updated when familiars list changes
+    if (familiars && familiars.length > 0 && !selectedFamiliar) {
+      setSelectedFamiliar(familiars[0]); // Default to first familiar if none selected
+    }
+  }, [familiars, selectedFamiliar]);
+
   const fetchPlayerStats = async () => {
     try {
       const res = await api1.get(`/game/playerStats?userId=${loggedInUser.id}`);
-      setCredits(res.data.coins); // Update credits from API response
-
-      // Optionally, update the loggedInUser credits
+      setCredits(res.data.coins);
       setLoggedInUser(prevUser => ({
         ...prevUser,
         credits: res.data.coins,
       }));
-
-      // Trigger credits update
-      setCreditsTrigger(prev => !prev); // Trigger to sync credits across the app
+      setCreditsTrigger(prev => !prev);
     } catch (err) {
       setError('Failed to fetch player stats');
     }
   };
 
-  const startGame = async () => {
-    try {
-      const res = await api1.post('/game/start', { userId: loggedInUser.id });
-      setPlayerHealth(res.data.playerHealth);
-      setDragonHealth(res.data.dragonHealth);
-      setBattleLog(res.data.battleLog || []);
-      setResultMessage('');
-      setGameOver(false);
-    } catch (err) {
-      setError('Error starting the game');
-    }
+const startGame = async () => {
+  const familiarToSend = {
+    name: selectedFamiliar?.name,   
+    image: selectedFamiliar?.image,
+    familiarId: selectedFamiliar?.familiarId || selectedFamiliar?._id,  // ✅ fallback to _id
   };
 
-  const makeMove = async () => {
+  console.log("Final familiar sent to startGame:", familiarToSend);
+  console.log('loggedInUser', loggedInUser);
     try {
-      const res = await api1.post('/game/move', {
+      const res = await api1.post('http://localhost:5000/game/start', {
         userId: loggedInUser.id,
-        playerHealth,
-        dragonHealth,
-        battleLog,
+        familiar: familiarToSend,
       });
+    
 
-      setPlayerHealth(res.data.playerHealth);
-      setDragonHealth(res.data.dragonHealth);
-      setBattleLog(res.data.battleLog);
+    console.log('Game started successfully:', res.data);
 
-      if (res.data.gameOver) {
-        setGameOver(true);
-        setResultMessage(res.data.resultMessage);
-        fetchPlayerStats(); // Refresh coins after the game is over
-      }
-    } catch (err) {
+    setPlayerHealth(res.data.playerHealth);
+    setDragonHealth(res.data.dragonHealth);
+    setBattleLog(res.data.battleLog || []);
+    setResultMessage('');
+    setGameOver(false);
+  } catch (err) {
+    setError('Error starting the game');
+    console.error("Error during start game:", err);
+  }
+};
+
+
+
+
+
+
+
+const makeMove = async () => {
+  if (!selectedFamiliar) {
+    setError('Please select a familiar to make a move!');
+    return;
+  }
+
+  try {
+    const res = await api1.post('/game/move', {
+      userId: loggedInUser.id,
+      familiarId: selectedFamiliar?.familiarId || selectedFamiliar?._id, // Handling both cases
+      playerHealth,
+      dragonHealth,
+      battleLog,
+    });
+
+    // Update the UI with new game state
+    setPlayerHealth(res.data.playerHealth);
+    setDragonHealth(res.data.dragonHealth);
+    setBattleLog(res.data.battleLog);
+
+    if (res.data.gameOver) {
+      setGameOver(true);
+      setResultMessage(res.data.resultMessage);
+      fetchPlayerStats();  // Make sure this function updates relevant player stats
+    }
+  } catch (err) {
+    // More detailed error handling
+    if (err.response && err.response.data) {
+      setError(`Error during move: ${err.response.data.message || err.message}`);
+    } else {
       setError('Error during move');
     }
-  };
+  }
+};
 
   return (
     <div className="game-container">
       <h2>🐉 Dragon Slayer</h2>
 
-      {/* Displaying Credits */}
       <div className="stats">
         <p>Coins: <span className="coins">{credits}</span></p>
       </div>
 
-      {/* Health Bars for Player and Dragon */}
-      <div className="health-info">
-      <div className="health-bar-container">
-        <div className="health-bar">
-          <div className="health player-health" style={{ width: `${playerHealth}%`, BackgroundColor: 'green' }}></div>
+      {/* Familiar Selection */}
+      <div className="familiar-selection">
+        <label>Select Familiar:</label>
+        <div className="familiar-options">
+          {familiars.map(fam => (
+            <div
+              key={fam._id}
+              className={`familiar-option ${selectedFamiliar && selectedFamiliar._id === fam._id ? 'selected' : ''}`}
+              onClick={() => {
+                setSelectedFamiliar(fam);
+                console.log('Selected Familiar:', fam);  // Console log to check selected familiar
+              }}
+            >
+              <img src={fam.image} alt={fam.name} className="familiar-icon" />
+              <div>
+                <strong>{fam.name}</strong>
+                <p>HP: {fam.hp}, DP: {fam.dp}</p>
+              </div>
+            </div>
+          ))}
         </div>
-        <span className="span">🧍 Your Health: {playerHealth}</span>
       </div>
 
-      <div className="health-bar-container">
-        <div className="health-bar">
-          <div className="health dragon-health" style={{ width: `${dragonHealth}%` }}></div>
+      {/* Health Bars */}
+      <div className="health-info">
+        <div className="health-bar-container">
+          <div className="health-bar">
+            <div className="health player-health" style={{ width: `${playerHealth}%`, backgroundColor: 'green' }}></div>
+          </div>
+          <span className="span">🧍 Your Health: {playerHealth}</span>
         </div>
-        <span className="span">🐲 Dragon Health: {dragonHealth}</span>
-      </div>
+
+        <div className="health-bar-container">
+          <div className="health-bar">
+            <div className="health dragon-health" style={{ width: `${dragonHealth}%`, backgroundColor: 'red' }}></div>
+          </div>
+          <span className="span">🐲 Dragon Health: {dragonHealth}</span>
+        </div>
       </div>
 
       {/* Action Buttons */}

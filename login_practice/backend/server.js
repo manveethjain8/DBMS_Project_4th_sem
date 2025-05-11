@@ -15,9 +15,11 @@ const app=express();
 
 connectDB();
 
+app.use(express.json());
+
 app.use(cors());
 
-app.use(express.json());
+
 
 app.get('/', (req, res)=>{
     res.send('MongoDB connected to familiarsTavern!');

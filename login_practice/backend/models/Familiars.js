@@ -10,6 +10,11 @@ const familiarSchema=new mongoose.Schema({
         type:String,
         required:true
     },
+    familiarId:{
+        type: mongoose.Schema.Types.ObjectId,  // Use ObjectId for referencing creatures
+        ref: 'Creature',                      // Reference the Creature model
+        required: true
+    },
     name:{
         type:String,
         required:true

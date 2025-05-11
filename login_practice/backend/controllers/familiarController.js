@@ -15,11 +15,12 @@ const getFamiliarsByUserId = async (req, res) => {
 // Add a new familiar to the user
 const addUserFamiliar = async (req, res) => {
     try {
-        const { userId, orderId, name, image, dateTime, contract } = req.body;
+        const { userId,familiarId, orderId, name, image, dateTime, contract } = req.body;
 
         const newFamiliar = new Familiar({
             userId,
             orderId,
+            familiarId,
             name,
             image,
             dateTime,

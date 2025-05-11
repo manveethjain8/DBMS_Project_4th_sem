@@ -74,7 +74,7 @@ const SelectedPage = () => {
       const newOrder = {
         userId: loggedInUser.id,
         familiars: cartCreatures.map(creature => ({
-          familiarId: creature._id,
+          familiarId: creature.creatureId,
           name: creature.name,
           quantity: creature.quantity,
           image: creature.image,
@@ -134,6 +134,7 @@ const SelectedPage = () => {
         ...fam,
         userId: loggedInUser.id,
         orderId: latestOrder._id,
+        familiarId: fam.familiarId,
         name:fam.name,
         image:fam.image,
         dateTime: fam.dateTime,
