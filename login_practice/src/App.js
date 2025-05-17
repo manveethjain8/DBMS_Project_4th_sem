@@ -16,9 +16,9 @@ function App() {
       <DataProvider>
         <Router>
           <Routes>
-            <Route path='/login' element={<LoginPage />} />
+            <Route path='/' element={<LoginPage />} />
             <Route path='/register' element={<RegisterPage />} />
-            <Route path='/' element={<MythicalCreatures />} />
+            <Route path='/mythicalCreatures' element={<MythicalCreatures />} />
             <Route path='/selected' element={<SelectedPage />} />
             <Route path='/contracts' element={<ContractPage />} />
             <Route path='/familiars' element={<FamiliarsPage />} />

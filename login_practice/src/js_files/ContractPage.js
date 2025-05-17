@@ -26,7 +26,7 @@ const ContractPage = () => {
       <div className='contractPageBackground'>
         <div className='contractPageOverlay'></div>
         <div className='contractPageHeader'>
-          <Link to='/'><p className='contractPageMythicalCreaturesText'>Mythical Creatures</p></Link>
+          <Link to='/mythicalCreatures'><p className='contractPageMythicalCreaturesText'>Mythical Creatures</p></Link>
           <Link to='/selected'><p className='contractPageShortListedCreaturesText'>Short Listed</p></Link>
           <Link to='/familiars'><p className='contractPageFamiliarsText'>Familiars</p></Link>
           <p className='contractPageShortListedCreaturesNumber'>{totalCreatures}</p>

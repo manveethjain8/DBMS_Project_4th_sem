@@ -57,7 +57,7 @@ const FamiliarsPage = () => {
       <div className='familiarsPageBackground'>
         <div className='familiarsPageOverlay'></div>
         <div className='familiarsPageHeader'>
-          <Link to='/'><p className='familiarsPageMythicalCreaturesText'>Mythical Creatures</p></Link>
+          <Link to='/mythicalCreatures'><p className='familiarsPageMythicalCreaturesText'>Mythical Creatures</p></Link>
           <Link to='/selected'><p className='familiarsPageShortListedCreaturesText'>Short Listed</p></Link>
           <Link to='/contracts'><p className='familiarsPageContractsText'>Contracts</p></Link>
           <p className='familiarsPageShortListedCreaturesNumber'>{totalCreatures}</p>

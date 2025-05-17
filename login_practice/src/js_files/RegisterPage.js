@@ -29,7 +29,7 @@ const RegisterPage = () => {
             setEmail('');
             setPassword('');
             setValidEmail(true);
-            navigate('/login');
+            navigate('/');
         } catch (err) {
             console.error(err);
             if (err.response?.data?.msg === 'User already exists') {

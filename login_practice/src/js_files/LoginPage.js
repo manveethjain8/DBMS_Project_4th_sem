@@ -27,7 +27,7 @@ const LoginPage = () => {
                 setPassword('');
                 setValidEmail(true);
                 setValidPassword(true);
-                navigate('/');
+                navigate('/mythicalCreatures');
             }
         }catch(err){
             console.error(err);

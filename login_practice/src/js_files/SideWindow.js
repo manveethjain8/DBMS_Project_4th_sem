@@ -50,10 +50,13 @@ const SideWindow = () => {
           <img className='userProfilePicture' src={loggedInUser?'/assets/profilePictures/shikimori.jpg':'/assets/profilePictures/noProfilePicture.png'} onClick={()=>setIsUserDetailsOpen(!isUserDetailsOpen)}/>
         </div>
         <div className='loginButtonBox'>
-            <Link to='/login'><button className='loginButton'>Login</button></Link>
+            <Link to='/'><button className='loginButton'>Login</button></Link>
         </div>
         <div className='logoutButtonBox'>
             <button className='logoutButton' onClick={()=>handleLogout()}>Logout</button>
+        </div>
+        <div className='playGameButtonBox'>
+          <Link to='/dragon-game'><button className='playGameButton'>Play Game</button></Link>
         </div>
         <div className={`userDetailsWindow ${isUserDetailsOpen?'open':''}`}>
         {loggedInUser ? (

@@ -164,7 +164,7 @@ const SelectedPage = () => {
     <div className='selectedPageContainer'>
       <div className='selectedPageOverlay'></div>
       <div className='selectedPageHeader'>
-          <Link to='/'><p className='selectedPageMythicalCreaturesText'>Mythical Creatures</p></Link>
+          <Link to='/mythicalCreatures'><p className='selectedPageMythicalCreaturesText'>Mythical Creatures</p></Link>
           <Link to='/contracts'><p className='selectedPageContractsText'>Contracts</p></Link>
           <Link to='/familiars'><p className='selectedPageFamiliarsText'>Familiars</p></Link>
           <div className='selectedPageCreditsBox'>

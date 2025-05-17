@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import api1 from '../api/axios1';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { DataContext } from '../context/dataContext';
 import '../css_files/DragonGame.css';
 
@@ -84,11 +84,6 @@ const startGame = async () => {
 };
 
 
-
-
-
-
-
 const makeMove = async () => {
   if (!selectedFamiliar) {
     setError('Please select a familiar to make a move!');
@@ -126,6 +121,9 @@ const makeMove = async () => {
 
   return (
     <div className="game-container">
+      <div className='dragonGameHeader'>
+        <Link to='/mythicalCreatures'><p className='dragonGameMythicalCreaturesText'>Mythical Creatures</p></Link>
+      </div>
       <h2>🐉 Dragon Slayer</h2>
 
       <div className="stats">
@@ -148,7 +146,6 @@ const makeMove = async () => {
               <img src={fam.image} alt={fam.name} className="familiar-icon" />
               <div>
                 <strong>{fam.name}</strong>
-                <p>HP: {fam.hp}, DP: {fam.dp}</p>
               </div>
             </div>
           ))}

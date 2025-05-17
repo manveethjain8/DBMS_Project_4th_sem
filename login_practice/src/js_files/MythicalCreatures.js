@@ -39,7 +39,7 @@ const MythicalCreatures = () => {
     
         const handleAddToCart = async () => {
             if (!loggedInUser) {
-                navigate('/login');
+                navigate('/');
                 return;
             }
     
@@ -77,7 +77,7 @@ const MythicalCreatures = () => {
         <div className='mythicalCreaturesPageBackground'>
             <div className='mythicalCreaturesOverlay'></div>
             <div className='mythicalCreaturesHeader'>
-                <Link to='/'><p className='mythicalCreaturesText'>Mythical Creatures</p></Link>
+                <Link to='/mythicalCreatures'><p className='mythicalCreaturesText'>Mythical Creatures</p></Link>
                 <Link to='/selected'><p className='shortListedCreaturesText'>Short Listed</p></Link>
                 <p className='shortListedCreaturesNumber'>{totalCreatures}</p>
                 <Link to='/contracts'><p className='contractCreaturesText'>Contracts</p></Link>
