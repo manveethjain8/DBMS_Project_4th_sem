@@ -12,7 +12,6 @@ const FamiliarsPage = () => {
   
   useEffect(() => {
     setUserFamiliars(familiars);
-    setFamiliarsTrigger(prev => !prev);
   }, [familiars]);
 
   const handleDismiss=async(familiarId, familiarUserId)=>{
@@ -20,6 +19,7 @@ const FamiliarsPage = () => {
     try{
       const requiredCredentials={familiarId, familiarUserId}
       await api1.patch('/familiars/deactivate', requiredCredentials);
+      setFamiliarsTrigger(prev => !prev);
 
       const response=await api1.get(`/familiars/${loggedInUser.id}`);
       setFamiliars(response.data);
@@ -32,6 +32,7 @@ const FamiliarsPage = () => {
     try{
       const requiredCredentials={familiarId, familiarUserId}
       await api1.patch('/familiars/activate', requiredCredentials);
+      setFamiliarsTrigger(prev => !prev);
 
       const response=await api1.get(`/familiars/${loggedInUser.id}`);
       setFamiliars(response.data);
