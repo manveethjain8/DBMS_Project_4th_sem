@@ -18,13 +18,14 @@ const DataProvider = ({ children }) => {
     const [familiarTrigger, setFamiliarTrigger] = useState(false);
     const [cartTrigger, setCartTrigger] = useState(false);
     const [usersTrigger, setUsersTrigger] = useState(false);
-    const [creditsTrigger, setCreditsTrigger] = useState(false); // Trigger for credits update
+    const [creditsTrigger, setCreditsTrigger] = useState(false);
+    const [familiarsTrigger,setFamiliarsTrigger] = useState(false); // Trigger for credits update
 
     const { data: usersData } = useAxiosFetch(loggedInUser ? `http://localhost:5000/users/${loggedInUser.id}` : null);
     const { data: mythicalCreaturesData } = useAxiosFetch('http://localhost:5000/creatures');
     const { data: cartData } = useAxiosFetch(loggedInUser ? `http://localhost:5000/cart/${loggedInUser.id}` : null);
     const { data: orderData } = useAxiosFetch(loggedInUser ? `http://localhost:5000/orders/${loggedInUser.id}` : null);
-    const { data: familiarsData } = useAxiosFetch(loggedInUser ? `http://localhost:5000/familiars/${loggedInUser.id}` : null, familiarTrigger);
+    const { data: familiarsData } = useAxiosFetch(loggedInUser ? `http://localhost:5000/familiars/${loggedInUser.id}` : null, familiarsTrigger);
 
     // Update loggedInUser and credits when usersData changes
     useEffect(() => {
@@ -101,6 +102,7 @@ const DataProvider = ({ children }) => {
             familiarTrigger, setFamiliarTrigger,
             cartTrigger, setCartTrigger,
             creditsTrigger, setCreditsTrigger,  // Expose the creditsTrigger
+            familiarsTrigger, setFamiliarsTrigger
         }}>
             {children}
         </DataContext.Provider>

@@ -10,7 +10,6 @@ function DragonGame() {
     setLoggedInUser,
     credits,
     setCredits,
-    creditsTrigger,
     setCreditsTrigger,
     familiars,
   } = useContext(DataContext);
@@ -24,6 +23,7 @@ function DragonGame() {
   const [resultMessage, setResultMessage] = useState('');
   const [error, setError] = useState('');
   const [selectedFamiliar, setSelectedFamiliar] = useState(familiars[0]); // Default to first familiar if available
+  const [activatedFamiliars, setActivatedFamiliars] = useState([]);
 
   useEffect(() => {
     if (!loggedInUser) {
@@ -34,11 +34,13 @@ function DragonGame() {
   }, [loggedInUser, navigate]);
 
   useEffect(() => {
-    // Ensure the familiar selection is updated when familiars list changes
-    if (familiars && familiars.length > 0 && !selectedFamiliar) {
-      setSelectedFamiliar(familiars[0]); // Default to first familiar if none selected
+    const availableFamiliars = familiars.filter(familiar => familiar.contract === true);
+    setActivatedFamiliars(availableFamiliars);
+    if (availableFamiliars.length > 0 && !selectedFamiliar) {
+      setSelectedFamiliar(availableFamiliars[0]);
     }
-  }, [familiars, selectedFamiliar]);
+  }, [familiars]); // Only depends on familiars
+
 
   const fetchPlayerStats = async () => {
     try {
@@ -134,7 +136,7 @@ const makeMove = async () => {
       <div className="familiar-selection">
         <label>Select Familiar:</label>
         <div className="familiar-options">
-          {familiars.map(fam => (
+          {activatedFamiliars.map(fam => (
             <div
               key={fam._id}
               className={`familiar-option ${selectedFamiliar && selectedFamiliar._id === fam._id ? 'selected' : ''}`}

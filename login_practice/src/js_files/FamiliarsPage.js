@@ -7,11 +7,12 @@ import SideWindow from './SideWindow';
 
 
 const FamiliarsPage = () => {
-  const { familiars, credits, totalCreatures, setFamiliars,loggedInUser } = useContext(DataContext);
+  const { familiars, credits, totalCreatures, setFamiliars,loggedInUser, setFamiliarsTrigger } = useContext(DataContext);
   const [userFamiliars, setUserFamiliars] = useState([]);
   
   useEffect(() => {
     setUserFamiliars(familiars);
+    setFamiliarsTrigger(prev => !prev);
   }, [familiars]);
 
   const handleDismiss=async(familiarId, familiarUserId)=>{
